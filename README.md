@@ -44,7 +44,7 @@ class DevelopmentConfig(Config):
     CSRF_ENABLED = True
     SECRET_KEY = "4234189"
     # datebase
-    SQLALCHEMY_DATABASE_URI = "mysql://root:ucwebit@127.0.0.1/mockapi"
+    SQLALCHEMY_DATABASE_URI = "mysql://$user:$passwd@127.0.0.1/mockapi"
     SQLALCHEMY_ECHO = True
     REDIS_SERVER = "127.0.0.1"
     REDIS_DB = 0

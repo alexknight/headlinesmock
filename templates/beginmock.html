@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+<head>
+{% block head %}
+    {{ super() }}
+    <script language="JavaScript" src="{{ url_for('static',filename='mockdeal/dynamicmock.js') }}"></script>
+    <title>接口自动化工具</title>
+{% endblock %}
+</head>
+{% block page_main %}
+    <div style="min-height: 392px;" class="col-lg-12">
+        <div class="row">
+            <div>
+                <h1 class="page-header">动态创建接口</h1>
+            </div>
+        </div>
+        <div>
+            <form method="post" action="/generte/data">
+                {% if form %}
+                    {{ form.csrf_token }}
+                {% endif %}
+
+                <div class="form-group">
+                    <label for="datatextarea">线上API地址</label>
+                    <textarea class="form-control" id="datatextarea" name="datatextarea">
+                    </textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="description">需要获取的数据批次</label>
+                    <input class="form-control" id="batch" name="batch" type="text" required="required">
+                </div>
+
+                <div class="form-group">
+                    <label for="flag">flag </label>
+                    <input class="form-control" id="flag" name="flag">
+                </div>
+
+                <div class="form-group">
+                    <button id="start_mock" type="Submit" class="btn btn-default">Submit &nbsp</button>
+                </div>
+            </form>
+        </div>
+    </div>
+{% endblock %}

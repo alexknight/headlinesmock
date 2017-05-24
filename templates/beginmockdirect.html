@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+<head>
+{% block head %}
+    {{ super() }}
+    <script language="JavaScript" src="{{ url_for('static',filename='mockdeal/staticmockcreator.js') }}"></script>
+    <title>接口自动化工具</title>
+{% endblock %}
+</head>
+
+{% block page_main %}
+    <div style="min-height: 392px;" class="col-lg-12">
+        <div class="row">
+            <div>
+                <h1 class="page-header">静态创建接口</h1>
+            </div>
+        </div>
+        <div>
+            <form method="post" action="/direct/generate/data">
+                {% if form %}
+                    {{ form.csrf_token }}
+                {% endif %}
+                <div class="form-group">
+                    <label for="api_direct">API </label>
+                    <input class="form-control" id="api_direct" name="api">
+                </div>
+                <div class="form-group">
+                    <label for="flag_direct">Flag </label>
+                    <input class="form-control" id="flag_directly" name="flag">
+                </div>
+                <div class="form-group">
+                    <textarea  id="static_json_datas" name="datas" rows=10 class="form-control"></textarea>
+                </div>
+                <div class="form-group" id="json_editor" name="json_editor"  style="width: 1400px; height: 400px;">
+                    <label for="json_datas">JSON Data <font style="color:#a94442" size="2"></font></label>
+                </div>
+                <div class="form-group">
+                    <button id="start_mock_direct" type="submit" class="btn btn-default">Submit &nbsp</button>
+                </div>
+            </form>
+        </div>
+    </div>
+{% endblock %}

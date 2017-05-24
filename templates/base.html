@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+{% block head %}
+    <meta charset="UTF-8">
+    <link rel="shortcut icon" href="/static/ico/avastar.jpg">
+    <script language="JavaScript" src="{{ url_for('static',filename='public/jquery.js') }}"></script>
+    <script language="JavaScript" src="{{ url_for('static',filename='public/jquery.json-2.4.min.js') }}"></script>
+    <script language="JavaScript" src="{{ url_for('static',filename='paging/jquery.dataTables.min.js') }}"></script>
+    <script language="JavaScript" src="{{ url_for('static',filename='tag_input/jquery.tagsinput.min.js') }}"></script>
+    <script language="JavaScript" src="{{ url_for('static',filename='jsoneditor/dist/jsoneditor.js') }}"></script>
+    <script language="JavaScript" src="{{ url_for('static',filename='jsoneditor/dist/jsoneditor.min.js') }}"></script>
+
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='public/bootstrap/css/bootstrap.min.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='paging/jquery.dataTables.min.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='sidebar/font-awesome.min.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='sidebar/sb-admin-2.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='tag_input/jquery.tagsinput.min.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='tag_input/jquery.tagsinput.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='jsoneditor/dist/jsoneditor.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='jsoneditor/dist/jsoneditor.min.css') }}">
+
+    <title>接口自动化工具</title>
+    {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            <div class="alert-message block-message error">
+            <a class="close" href="#">×</a>
+                {% for message in messages %}
+                    <ul class=flashes style="font-size: 160%;font-family: inherit;font-weight: bolder;color: rgb(240, 115, 32)">
+                      <li>{{ message }}</li>
+                    </ul>
+                {% endfor %}
+
+            </div>
+        {% endif %}
+    {% endwith %}
+{% endblock %}
+</head>
+<body>
+<div class="row">
+{% block content %}
+    <!-- sidebar -->
+    {% block sidebar %}
+        <div id="wrapper">
+    <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">&nbsp&nbsp接口自动化工具</a>
+        </div>
+
+        <div class="navbar-default sidebar" role="navigation">
+            <div class="sidebar-nav navbar-collapse">
+                <ul class="nav in" id="side-menu">
+                    <li>
+                        <a href="/" class="active" style="font-size: larger"> &nbsp&nbsp主页</a>
+                    </li>
+                    <li class="active">
+                        <a href="#">&nbsp&nbspMock </a>
+                        <ul class="nav nav-second-level collapse in">
+                            <li>
+                                <a href="/startMock" class="active">&nbsp&nbsp动态创建接口</a>
+                            </li>
+                            <li>
+                                <a href="/startMockDirect">&nbsp&nbsp静态创建接口</a>
+                            </li>
+                            <li>
+                                <a href="/results">&nbsp&nbsp数据列表</a>
+                            </li>
+                            <li>
+                                <a href="/apicompare">&nbsp&nbspAPI对比列表</a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    </div>
+    {% endblock %}
+    <!-- Page Content -->
+    <div id="page-wrapper" style="min-height: 800px;">
+    <div class="row">
+    {% block page_main %}
+    {% endblock %}
+    </div>
+{% endblock %}
+</div>
+</body>
+<script type="application/javascript">
+    function test(msg){
+        alert("hello "+msg);
+    }
+</script>
+</html>
